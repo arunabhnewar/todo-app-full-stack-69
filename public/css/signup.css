@@ -1,0 +1,44 @@
+.signup_section {
+    background: linear-gradient(
+        rgba(43, 43, 43, 0.4),
+        rgba(56, 56, 56, 0.5)
+      ),
+      url(../assets/sign_up.jpg)
+        center;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100vw;
+        height: 100vh;
+}
+
+.signup_container{
+    background: #D5DBDB !important;
+    max-width: 500px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 6px;
+}
+
+.signup_container h3 {
+    color: #78281F  !important;
+}
+
+form label {
+    color: #78281F  !important;
+}
+
+.signup_container p {
+    color: #78281F ;
+}
+
+.signup_container a {
+    text-decoration: none;
+    color: #228B22 !important;
+}
+
+.fucking_error {
+    color: #FF4500 !important
+}

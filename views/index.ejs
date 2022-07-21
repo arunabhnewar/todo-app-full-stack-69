@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Document</title>
+
+
+        <!-----Bootstrap style link------>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
+
+        <!------Custom css-------->
+        <link rel="stylesheet" href="/css/main.css">
+
+
+        <!------custom js-------->
+        <script defer src="/js/index.js"></script>
+
+    </head>
+
+    <body>
+
+
+        <header>
+            <div class="container mt-4 d-flex justify-content-end align-items-center">
+                <h5 class="text-warning pe-3"> <%= name %> </h5>
+                <a href='/signout' class="btn btn-success">Sign Out</a>
+            </div>
+        </header>
+
+
+        <main>
+
+            <!-------Add Task Section Start------->
+            <div class="container mt-5 pt-5">
+                <h2 class="text-warning">Add your task here:</h2>
+
+
+                <form method="post" id="form" action="/addNewTask">
+                    <div class="d-flex gap-3 mt-4">
+                        <div class="mb-3">
+                            <label for="taskname" class="form-label text-white">Task Name</label>
+                            <input type="text" name="taskname" class="form-control" id="taskname"
+                                aria-describedby="taskHelp" />
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="selectedItem" class="form-label text-white">Priority</label>
+                            <select name="priority" class="form-select" aria-label="Default select example"
+                                id="selectedItem">
+                                <option disabled selected>-select Priority--</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="date" class="form-label text-white">Date</label>
+                            <input type="date" name="date" class="form-control" id="date" aria-describedby="dateHelp" />
+                        </div>
+
+                        <input name="id" type="hidden" />
+                        <div class="mb-3 d-flex align-items-end">
+                            <button id="submit" type="submit" class="btn btn-success">Add Task</button>
+                        </div>
+
+
+                    </div>
+
+
+                </form>
+            </div>
+            <!-------Add Task Section End------->
+
+
+            <!--------My Task List Section Start------->
+            <section class="container mt-4">
+                <table class="table table-success table-striped">
+
+                    <% if(todos.length> 0) { %>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">SL</th>
+                            <th scope="col">Task Name</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <% } %>
+
+
+                    <tbody>
+                        <% if(todos.length> 0) { %>
+
+                        <% todos.forEach((todo, i)=> { %>
+
+                        <tr id="<%=todo._id%>">
+
+                            <td><%= i + 1 %></td>
+                            <td class="taskname"><%=todo.taskname%></td>
+                            <td class="priority"><%= todo.priority %></td>
+                            <td class="status"><%= todo.status %></td>
+                            <td class="date"><%= todo.date.toDateString() %></td>
+                            <td>
+                                <a href="/updateStatus/<%= todo._id %>" class="btn btn-success">Status
+                                    Edit</a>
+                                <a data-id="<%=todo._id%>" class="btn btn-warning">Edit</a>
+                                <a href="/deleteTask/<%= todo._id %>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                        <% } else { %>
+                        <p class="text-danger"> Idiot!! You didn't add any fucking task.</p>
+                        <% } %>
+                    </tbody>
+                </table>
+
+            </section>
+            <!--------My Task List Section End------->
+        </main>
+
+    </body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign In Page</title>
+
+        <!-----Bootstrap style link------>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
+
+        <!------Custom css-------->
+        <link rel="stylesheet" href="/css/signin.css">
+
+    </head>
+
+    <body>
+
+        <div class="signin_section">
+            <div class="container">
+                <div class="signin_container">
+                    <h3 class="pb-3 fw-bold">Sign In</h3>
+
+                    <form method="post" action="/signin">
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Your Email</label>
+
+                            <input type="email" name="email" class="form-control 
+                            <%= err && emailError ? 'border-danger': '' %>
+                            " id="exampleInputEmail1" aria-describedby="emailHelp" <% if(err && email) { %>
+                                value="<%= email %>" <% }%>>
+
+                            <p class="fucking_error"><%= err && isExistData ? err : "" %></p>
+
+
+                            <% if(err && emailError) { %>
+                            <p class="warnning_text">
+                                <%= err %>
+                            </p>
+                            <% }%>
+
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+
+                            <input type="password" name="password" class="form-control 
+                        <%= passwordError ? 'border-danger': '' %>
+                        " id="exampleInputPassword1">
+
+                            <p class="fucking_error"><%= err && isExistData ? err : "" %></p>
+
+                            <% if(err && passwordError) { %>
+                            <p class="warnning_text">
+                                <%= err %>
+                            </p>
+
+                            <% } %>
+                        </div>
+
+                        <button type="submit" class="btn w-100 btn-success">Sign In</button>
+                    </form>
+
+                    <p class="pt-2">New User? Please<a href="/signup"> Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
