@@ -1,9 +1,9 @@
 .signup_section {
     background: linear-gradient(
-        rgba(43, 43, 43, 0.4),
-        rgba(56, 56, 56, 0.5)
+        rgba(24, 23, 23, 0.4),
+        rgba(32, 29, 29, 0.9)
       ),
-      url(../assets/sign_up.jpg)
+      url(../assets/signUp.jpg)
         center;
         background-size: cover;
         display: flex;
@@ -14,12 +14,14 @@
 }
 
 .signup_container{
-    background: #D5DBDB !important;
+    background: #e5e7e7 !important;
     max-width: 500px;
     width: 100%;
     margin: 50px auto;
     padding: 40px;
     border-radius: 6px;
+    opacity: 0.6;
+    box-shadow: 0 0 20px rgb(8, 153, 97);
 }
 
 .signup_container h3 {
